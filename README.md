@@ -1,38 +1,29 @@
-# create-svelte
+# unsplash-svkit
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+:camera: unsplash search using sveltekit
 
-## Creating a project
+requirements: [unsplash developer api key](https://unsplash.com/developers)
 
-If you're seeing this, you've probably already done this step. Congrats!
+add unsplash developer key to `.env` file in base of project
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+    NEXT_PUBLIC_API_CLIENTID="insert-api-key-here"
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+created as a working example of next.js & is based on [unsplash-js-search
+](https://github.com/equk/unsplash-js-search) (unsplash search using vanillajs)
 
-## Developing
+## unsplash references
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+- https://unsplash.com/documentation
+- https://unsplash.com/api-terms
 
-```bash
-npm run dev
+# contact
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+Website: https://equk.co.uk
 
-## Building
+Twitter: [@equilibriumuk](https://twitter.com/equilibriumuk)
 
-To create a production version of your app:
+### notes
 
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+> Unsplash API Terms (Attribution)
+>
+> Each time you or your Developer App displays a Photo, your Developer App must attribute Unsplash, the Unsplash photographer, and contain a link back to the photographer’s Unsplash profile.
