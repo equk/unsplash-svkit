@@ -1,7 +1,6 @@
 <script>
   export let data;
   const { images } = data;
-  console.log(images);
 </script>
 
 <div class="flex w-full flex-col items-center justify-center rounded-lg p-8">
@@ -45,72 +44,29 @@
   <section class="overflow-hidden text-gray-700 ">
     <div class="container px-5 py-2 mx-auto lg:px-32">
       <div class="flex flex-wrap -m-1 md:-m-2">
-        <div class="flex flex-wrap w-1/3">
-          <div class="relative w-full p-1 md:p-2">
-            <img
-              alt="gallery"
-              class="block object-cover object-center w-full h-full rounded-lg"
-              src="640_400.png"
-            />
-            <a
-              class="text-sm drop-shadow text-white font-semibold absolute top-3 right-4"
-              target="_blank"
-              rel="noreferrer"
-              href="http://unsplash.com/">View on Unsplash</a
-            >
-            <a
-              class="text-sm drop-shadow text-white font-semibold absolute bottom-3 left-4"
-              target="_blank"
-              rel="noreferrer"
-              href="http://unsplash.com/">Photo By: User</a
-            >
+        {#each images as image}
+          <div class="flex flex-wrap w-1/3">
+            <div class="relative w-full p-1 md:p-2">
+              <img
+                alt={image.id}
+                class="block object-cover object-center w-full h-full rounded-lg"
+                src={image.urls.regular}
+              />
+              <a
+                class="text-sm drop-shadow text-white font-semibold absolute top-3 right-4"
+                target="_blank"
+                rel="noreferrer"
+                href={image.links.html}>View on Unsplash</a
+              >
+              <a
+                class="text-sm drop-shadow text-white font-semibold absolute bottom-3 left-4"
+                target="_blank"
+                rel="noreferrer"
+                href={image.user.links.html}>Photo By: {image.user.name}</a
+              >
+            </div>
           </div>
-        </div>
-        <div class="flex flex-wrap w-1/3">
-          <div class="w-full p-1 md:p-2">
-            <img
-              alt="gallery"
-              class="block object-cover object-center w-full h-full rounded-lg"
-              src="640_400.png"
-            />
-          </div>
-        </div>
-        <div class="flex flex-wrap w-1/3">
-          <div class="w-full p-1 md:p-2">
-            <img
-              alt="gallery"
-              class="block object-cover object-center w-full h-full rounded-lg"
-              src="640_400.png"
-            />
-          </div>
-        </div>
-        <div class="flex flex-wrap w-1/3">
-          <div class="w-full p-1 md:p-2">
-            <img
-              alt="gallery"
-              class="block object-cover object-center w-full h-full rounded-lg"
-              src="640_400.png"
-            />
-          </div>
-        </div>
-        <div class="flex flex-wrap w-1/3">
-          <div class="w-full p-1 md:p-2">
-            <img
-              alt="gallery"
-              class="block object-cover object-center w-full h-full rounded-lg"
-              src="640_400.png"
-            />
-          </div>
-        </div>
-        <div class="flex flex-wrap w-1/3">
-          <div class="w-full p-1 md:p-2">
-            <img
-              alt="gallery"
-              class="block object-cover object-center w-full h-full rounded-lg"
-              src="640_400.png"
-            />
-          </div>
-        </div>
+        {/each}
       </div>
     </div>
   </section>
