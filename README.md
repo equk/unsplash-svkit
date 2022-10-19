@@ -11,6 +11,10 @@ add unsplash developer key to `.env` file in base of project
 created as a working example of next.js & is based on [unsplash-js-search
 ](https://github.com/equk/unsplash-js-search) (unsplash search using vanillajs)
 
+## screenshot
+
+![](screenshot.jpg)
+
 ## unsplash references
 
 - https://unsplash.com/documentation
