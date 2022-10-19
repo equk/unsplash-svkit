@@ -1,6 +1,7 @@
 <script>
   export let data;
-  console.log(data);
+  const { images } = data;
+  console.log(images);
 </script>
 
 <div class="flex w-full flex-col items-center justify-center rounded-lg p-8">
