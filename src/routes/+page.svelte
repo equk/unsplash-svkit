@@ -1,6 +1,23 @@
 <script>
-  export let data;
-  const { images } = data;
+  import { env as public_env } from '$env/dynamic/public';
+
+  let searchTerm = '';
+
+  const api_clientid = public_env.PUBLIC_API_CLIENTID;
+  const api_url = `https://api.unsplash.com/search/photos?page=1&per_page=12&client_id=${api_clientid}`;
+
+  let searchImages = fetchImages();
+
+  async function fetchImages(searchTerm = 'neon') {
+    const imageRes = await fetch(`${api_url}&query=${searchTerm}`);
+    const imageData = await imageRes.json();
+    console.log(imageData.results);
+    return imageData.results;
+  }
+
+  function handleSubmit() {
+    searchImages = fetchImages(searchTerm);
+  }
 </script>
 
 <div class="flex w-full flex-col items-center justify-center rounded-lg p-8">
@@ -10,17 +27,21 @@
   <div class="m-8 flex">
     <div class="mb-3 xl:w-96">
       <div class="input-group relative flex items-stretch w-full mb-4">
-        <input
-          type="search"
-          class="form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-          placeholder="Search"
-          aria-label="Search"
-          aria-describedby="button-addon2"
-        />
+        <form on:submit|preventDefault={handleSubmit}>
+          <input
+            type="search"
+            class="form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+            placeholder="Search"
+            aria-label="Search"
+            aria-describedby="button-addon2"
+            bind:value={searchTerm}
+          />
+        </form>
         <button
           class="btn inline-block ml-3 px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700  focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out flex items-center"
           type="button"
           id="button-addon2"
+          on:click|preventDefault={handleSubmit}
         >
           <svg
             aria-hidden="true"
@@ -44,29 +65,7 @@
   <section class="overflow-hidden text-gray-700 ">
     <div class="container px-5 py-2 mx-auto lg:px-32">
       <div class="flex flex-wrap -m-1 md:-m-2">
-        {#each images as image}
-          <div class="flex flex-wrap w-1/3">
-            <div class="relative w-full p-1 md:p-2">
-              <img
-                alt={image.id}
-                class="block object-cover object-center w-full h-full rounded-lg"
-                src={image.urls.regular}
-              />
-              <a
-                class="text-sm drop-shadow text-white font-semibold absolute top-3 right-4"
-                target="_blank"
-                rel="noreferrer"
-                href={image.links.html}>View on Unsplash</a
-              >
-              <a
-                class="text-sm drop-shadow text-white font-semibold absolute bottom-3 left-4"
-                target="_blank"
-                rel="noreferrer"
-                href={image.user.links.html}>Photo By: {image.user.name}</a
-              >
-            </div>
-          </div>
-        {/each}
+        <img src="640_400.png" alt="imageresult" />
       </div>
     </div>
   </section>
