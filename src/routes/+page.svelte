@@ -11,7 +11,6 @@
   async function fetchImages(searchTerm = 'neon') {
     const imageRes = await fetch(`${api_url}&query=${searchTerm}`);
     const imageData = await imageRes.json();
-    console.log(imageData.results);
     return imageData.results;
   }
 
@@ -65,7 +64,35 @@
   <section class="overflow-hidden text-gray-700 ">
     <div class="container px-5 py-2 mx-auto lg:px-32">
       <div class="flex flex-wrap -m-1 md:-m-2">
-        <img src="640_400.png" alt="imageresult" />
+        {#await searchImages}
+          <p>searching ...</p>
+        {:then images}
+          {#each images as image}
+            <div class="flex flex-wrap w-1/3">
+              <div class="relative w-full p-1 md:p-2">
+                <img
+                  alt={image.id}
+                  class="block object-cover object-center w-full h-full rounded-lg aspect-[4/3]"
+                  src={image.urls.regular}
+                />
+                <a
+                  class="text-sm drop-shadow text-white font-semibold absolute top-3 right-4"
+                  target="_blank"
+                  rel="noreferrer"
+                  href={image.links.html}>View on Unsplash</a
+                >
+                <a
+                  class="text-sm drop-shadow text-white font-semibold absolute bottom-3 left-4"
+                  target="_blank"
+                  rel="noreferrer"
+                  href={image.user.links.html}>Photo By: {image.user.name}</a
+                >
+              </div>
+            </div>
+          {/each}
+        {:catch error}
+          <p>ERROR: <span>{error}</span></p>
+        {/await}
       </div>
     </div>
   </section>
