@@ -25,7 +25,7 @@
   </div>
   <div class="m-8 flex">
     <div class="mb-3 xl:w-96">
-      <div class="input-group relative flex items-stretch w-full mb-4">
+      <div class="justify-center input-group relative flex items-stretch w-full mb-4">
         <form on:submit|preventDefault={handleSubmit}>
           <input
             type="search"
@@ -97,8 +97,10 @@
     </div>
   </section>
   <div class="mt-3">
-    <p>
-      Created by <a href="https://github.com/equk">equk</a>
+    <p class="text-center">
+      Created by <a href="https://github.com/equk" class="text-blue-600">equk</a><br />
+      <img src="sveltekit.svg" alt="sveltekit" width="20px" height="20px" class="inline" />
+      <img src="tailwind.svg" alt="tailwind" width="20px" height="20px" class="inline" />
     </p>
   </div>
 </div>
