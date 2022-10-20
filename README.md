@@ -2,6 +2,17 @@
 
 :camera: unsplash search using sveltekit
 
+- [x] Loading Feedback
+- [x] Async API Requests
+- [x] API Key Seperated Using `.env`
+
+
+⚡️ powered by
+
+- [x] [sveltekit](https://github.com/sveltejs/kit)
+- [x] [vite](https://github.com/vitejs/vite)
+- [x] [tailwindcss](https://github.com/tailwindlabs/tailwindcss)
+
 requirements: [unsplash developer api key](https://unsplash.com/developers)
 
 add unsplash developer key to `.env` file in base of project
